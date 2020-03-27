@@ -9,6 +9,7 @@
 #include "menu.hpp"
 #include "consumer.hpp"
 #include "venue_manager.hpp"
+#include "return.hpp"
 
 using namespace std;
 
@@ -22,11 +23,11 @@ int main(){
 	Menu logIn = Menu();
 	Consumer consumer;
 	VenueManager venue_manager;
-   
+	Return quit;
 	
     logIn.addOption(string("Consumer"), &consumer);
-    logIn.addOption(string("Also consumer"), &consumer);
 	logIn.addOption(string("Venue manager"), &venue_manager);
+	logIn.addOption(string("Quit"), &quit);
 
 	logIn.display(&ctx);
 	

@@ -13,9 +13,14 @@ struct MenuContext {
     ShowList* shows;
 };
 
+enum LoopState { 
+    Break,
+    Continue,
+};
+
 class Routine {
     public:
-    virtual void run(MenuContext *ctx) =0;
+    virtual LoopState run(MenuContext *ctx) =0;
 };
 
 class Menu {
@@ -27,15 +32,19 @@ public:
     }
 
     void display(MenuContext* ctx) {
-        int i = 1;
-        vector<Routine*> choices;
-        for (map<string, Routine*>::iterator it=options.begin(); it!=options.end(); ++it) {
-            cout << i++ << ' ' << it->first << endl;
-            choices.push_back(it->second);
-        }
-        int choice;
-        cin >> choice;
-        choices[choice-1]->run(ctx);
+       LoopState loop_state;
+        do {    
+            int i = 1;
+            vector<Routine*> choices;
+            for (map<string, Routine*>::iterator it=options.begin(); it!=options.end(); ++it) {
+                cout << i++ << ' ' << it->first << endl;
+                choices.push_back(it->second);
+            }
+            int choice;
+            cin >> choice;
+            
+            loop_state = choices[choice-1]->run(ctx);
+        } while (loop_state != Break) ;
     }
 };
 #endif
