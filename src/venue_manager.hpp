@@ -4,7 +4,7 @@
 #include <string>
 
 #include "user.hpp"
-#include "routine.hpp"
+#include "menu.hpp"
 #include "show_list.hpp"
 
 
@@ -20,7 +20,7 @@ void createShow(ShowList* upcoming_shows) {
 	cin >> show_start_date;
 	cout << "Input end" << endl;
 	cin >> show_end_date;
-    
+
 	upcoming_shows->schedule(ShowTime(show_start_date, show_end_date),Show(string(show_name)));
 	cout << "Here is the updated show list: " << endl;
 	upcoming_shows->print_shows();
@@ -29,11 +29,11 @@ void createShow(ShowList* upcoming_shows) {
 class VenueManager: public Routine {		       
 
 public:
-    void run() {
-        //TODO: move up out of routine
-        ShowList* upcoming_shows = exampleShowList();
-
+    void run(MenuContext* ctx) {
         cout <<"Venue Manager menu" <<endl;
+
+//        Menu venue_menu;
+//        venue_menue.add_option(string("Browse shows"), BrowseShows);
 
         int choice;
         while (choice != 3) {
@@ -45,12 +45,12 @@ public:
             switch (choice) {
                 case 1: {
                     cout << "Current Shows:" << endl;
-                    upcoming_shows->print_shows();
+                    ctx->shows->print_shows();
                     break;
                 }
                 case 2: {
                     cout << "Create a new show" << endl;
-                    createShow(upcoming_shows);
+                    createShow(ctx->shows);
                 }
                 case 3: {
                     // program();	

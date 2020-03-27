@@ -4,9 +4,19 @@
 #include <iostream>
 #include <map>
 #include <vector>
-#include "routine.hpp"
+#include "menu.hpp"
+#include "show_list.hpp"
 
 using namespace std;
+
+struct MenuContext {
+    ShowList* shows;
+};
+
+class Routine {
+    public:
+    virtual void run(MenuContext *ctx) =0;
+};
 
 class Menu {
     map<string, Routine*> options;
@@ -16,7 +26,7 @@ public:
         options[label] = routine;
     }
 
-    void display() {
+    void display(MenuContext* ctx) {
         int i = 1;
         vector<Routine*> choices;
         for (map<string, Routine*>::iterator it=options.begin(); it!=options.end(); ++it) {
@@ -25,7 +35,7 @@ public:
         }
         int choice;
         cin >> choice;
-        choices[choice-1]->run();
+        choices[choice-1]->run(ctx);
     }
 };
 #endif
