@@ -1,3 +1,6 @@
+#ifndef SHOW_TIME_H
+#define SHOW_TIME_H
+
 class ShowTime {
 
 public:
@@ -20,3 +23,4 @@ public:
     }
 
 };
+#endif

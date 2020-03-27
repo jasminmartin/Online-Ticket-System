@@ -1,5 +1,4 @@
 build: 
-	clang++ main.cpp -include show.hpp show_list.hpp -o ticketer
-
+	clang++ --std=c++11 main.cpp -include show.hpp show_list.hpp user.hpp consumer.hpp venue_manager.hpp
 clean:
-	rm ticketer
+	rm a.out
