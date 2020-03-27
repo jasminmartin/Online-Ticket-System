@@ -2,15 +2,21 @@
 #define SHOW_H
 
 #include <iostream>
+
+#include "seating_chart.hpp"
+
 using namespace std;
 
 class Show {
 
 public:
     string title;
-    Show() {};
+    SeatingChart seats;
 
-    Show(string t) {
+
+    Show(): seats() {};
+
+    Show(string t): seats() {
         title = t;
     };
 };

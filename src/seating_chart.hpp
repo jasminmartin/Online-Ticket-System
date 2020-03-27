@@ -1,10 +1,7 @@
 #ifndef SEATING_CHART_H
 #define SEATING_CHART_H
 
-
-#include "show_time.hpp"
-#include "show.hpp"
-#include "show_list.hpp"
+using namespace std;
 
 class SeatingChart {
 	public:
@@ -50,44 +47,6 @@ class SeatingChart {
 		cin >> selected_column;
 		setOccupied(selected_row, selected_column);
 		displaySeatChart();
-	};
-
-	void displayConsumerMenu() {
-
-		int choice;
-		ShowList* upcoming_shows = exampleShowList();
-
-		while (choice != 3) {
-			cout << "Select from the menu using the numbers" << endl;
-			cout << "(1) Browse shows" << endl;
-			cout << "(2) Purchase tickets" << endl;
-			cout << "(3) Log out" << endl;
-			cin >> choice;
-			switch (choice) {
-				case 1: {
-					cout << "Current Shows:" << endl;
-					upcoming_shows->print_shows();
-					break;
-				}
-				case 2: {
-					cout << "Which show would you like to purchase tickets for?" << endl;
-					Show* show_selected = upcoming_shows->select_show();
-					cout << "You selected: " <<show_selected->title<< endl;
-					SeatingChart* chart = new SeatingChart();
-					chart->displaySeatChart();
-					chart->updateSeatingChart();
-				}
-				case 3: {
-					// program();	
-				}
-				default: {
-					cout <<"Please select the option 1,2 or 3." <<endl;
-					break;
-				}
-			}
-		}
 	}
-  
-
 };
 #endif
