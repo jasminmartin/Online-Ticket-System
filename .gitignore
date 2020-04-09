@@ -1,2 +1,4 @@
 ticketer
 *.vscode
+*.gch
+*.out
