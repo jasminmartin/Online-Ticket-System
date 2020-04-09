@@ -4,12 +4,12 @@
 #include "menu.hpp"
 
 class CreateShow: public Routine {
+    string show_name;
+    int show_start_date;
+    int show_end_date;
 
 public:
     LoopState run(MenuContext* ctx) {
-        string show_name;
-        int show_start_date;
-        int show_end_date;
 
         cout << "Input show name: ";
         cin.ignore();

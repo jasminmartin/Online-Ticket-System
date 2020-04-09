@@ -6,6 +6,8 @@ using namespace std;
 class SeatingChart {
 	public:
 	int seating_chart[10][10];
+			int selected_row;
+		int selected_column;
 	
 	SeatingChart(): seating_chart {
 			{0,0,0,0,0,0,0,0,0},

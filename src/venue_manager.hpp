@@ -3,7 +3,6 @@
 
 #include <string>
 
-#include "user.hpp"
 #include "menu.hpp"
 #include "show_list.hpp"
 #include "display_shows.hpp"
@@ -13,15 +12,13 @@
 class VenueManager: public Routine {		       
 
 public:
+    Menu venue_menu;
+    DisplayShows display_shows;
+    CreateShow create_show;
+    Return logout;
+
     LoopState run(MenuContext* ctx) {
         cout <<"Venue Manager menu" <<endl;
-
-        Menu venue_menu;
-
-        DisplayShows display_shows;
-        CreateShow create_show;
-        Return logout;
-
         venue_menu.addOption(string("List shows"), &display_shows);
         venue_menu.addOption(string("Create show"), &create_show);
         venue_menu.addOption(string("Logout"), &logout);
